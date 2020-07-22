@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GenericsModelStoreContainer" CdmEntityContainer="GenericsEntities">
+    <EntitySetMapping Name="Catalogo_Conexiones">
+      <EntityTypeMapping TypeName="GenericsModel.Catalogo_Conexiones">
+        <MappingFragment StoreEntitySet="Catalogo_Conexiones">
+          <ScalarProperty Name="IdTipoBD" ColumnName="IdTipoBD" />
+          <ScalarProperty Name="ConnectionString" ColumnName="ConnectionString" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdConexion" ColumnName="IdConexion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Catalogo_Procedimientos_Funciones">
+      <EntityTypeMapping TypeName="GenericsModel.Catalogo_Procedimientos_Funciones">
+        <MappingFragment StoreEntitySet="Catalogo_Procedimientos_Funciones">
+          <ScalarProperty Name="ValorMostar" ColumnName="ValorMostar" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdProcedimientoFuncion" ColumnName="IdProcedimientoFuncion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Configuracion">
+      <EntityTypeMapping TypeName="GenericsModel.Configuracion">
+        <MappingFragment StoreEntitySet="Configuracion">
+          <ScalarProperty Name="Orden" ColumnName="Orden" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="CodigoPais" ColumnName="CodigoPais" />
+          <ScalarProperty Name="NombreSchema" ColumnName="NombreSchema" />
+          <ScalarProperty Name="IdEstructura" ColumnName="IdEstructura" />
+          <ScalarProperty Name="IdConexion" ColumnName="IdConexion" />
+          <ScalarProperty Name="IdProcedimientoFuncion" ColumnName="IdProcedimientoFuncion" />
+          <ScalarProperty Name="IdConfiguracion" ColumnName="IdConfiguracion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="GenericsModel.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa_Pais">
+      <EntityTypeMapping TypeName="GenericsModel.Empresa_Pais">
+        <MappingFragment StoreEntitySet="Empresa_Pais">
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="CodigoPais" ColumnName="CodigoPais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estructuras_De_Base_Datos">
+      <EntityTypeMapping TypeName="GenericsModel.Estructuras_De_Base_Datos">
+        <MappingFragment StoreEntitySet="Estructuras_De_Base_Datos">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdEstructura" ColumnName="IdEstructura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pais">
+      <EntityTypeMapping TypeName="GenericsModel.Pais">
+        <MappingFragment StoreEntitySet="Pais">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CodigoPais" ColumnName="CodigoPais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parametro">
+      <EntityTypeMapping TypeName="GenericsModel.Parametro">
+        <MappingFragment StoreEntitySet="Parametro">
+          <ScalarProperty Name="TipoDato" ColumnName="TipoDato" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipos_Base_De_Datos">
+      <EntityTypeMapping TypeName="GenericsModel.Tipos_Base_De_Datos">
+        <MappingFragment StoreEntitySet="Tipos_Base_De_Datos">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdTipoBD" ColumnName="IdTipoBD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Procedimiento_Funcion_Parametro" TypeName="GenericsModel.Procedimiento_Funcion_Parametro" StoreEntitySet="Procedimiento_Funcion_Parametro">
+      <EndProperty Name="Parametro">
+        <ScalarProperty Name="IdParametro" ColumnName="IdParametro" />
+      </EndProperty>
+      <EndProperty Name="Catalogo_Procedimientos_Funciones">
+        <ScalarProperty Name="IdProcedimientoFuncion" ColumnName="IdProcedimientoFuncion" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

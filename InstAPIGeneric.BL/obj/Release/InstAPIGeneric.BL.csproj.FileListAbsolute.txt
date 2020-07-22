@@ -1,0 +1,15 @@
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\InstAPIGeneric.BL.dll.config
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\InstAPIGeneric.BL.dll
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\InstAPIGeneric.BL.pdb
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\EntityFramework.dll
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\EntityFramework.SqlServer.dll
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\IBM.Data.Informix.dll
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\InstAPIGeneric.Model.dll
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\InstAPIGeneric.Model.pdb
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\InstAPIGeneric.Model.dll.config
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\EntityFramework.xml
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\bin\Release\EntityFramework.SqlServer.xml
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\obj\Release\InstAPIGeneric.BL.csprojAssemblyReference.cache
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\obj\Release\InstAPIGeneric.BL.csproj.CopyComplete
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\obj\Release\InstAPIGeneric.BL.dll
+D:\Proyectos\Instacredit\MotorDesicionAPIConsumo\InstAPIGeneric\InstAPIGeneric.BL\obj\Release\InstAPIGeneric.BL.pdb

@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GenericsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="GenericsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Catalogo_Conexiones" EntityType="GenericsModel.Catalogo_Conexiones" />
+    <EntitySet Name="Catalogo_Procedimientos_Funciones" EntityType="GenericsModel.Catalogo_Procedimientos_Funciones" />
+    <EntitySet Name="Configuracion" EntityType="GenericsModel.Configuracion" />
+    <EntitySet Name="Empresa" EntityType="GenericsModel.Empresa" />
+    <EntitySet Name="Empresa_Pais" EntityType="GenericsModel.Empresa_Pais" />
+    <EntitySet Name="Estructuras_De_Base_Datos" EntityType="GenericsModel.Estructuras_De_Base_Datos" />
+    <EntitySet Name="Pais" EntityType="GenericsModel.Pais" />
+    <EntitySet Name="Parametro" EntityType="GenericsModel.Parametro" />
+    <EntitySet Name="Tipos_Base_De_Datos" EntityType="GenericsModel.Tipos_Base_De_Datos" />
+    <AssociationSet Name="FK_Catalogo_Conexiones_Tipos_Base_De_Datos" Association="GenericsModel.FK_Catalogo_Conexiones_Tipos_Base_De_Datos">
+      <End Role="Tipos_Base_De_Datos" EntitySet="Tipos_Base_De_Datos" />
+      <End Role="Catalogo_Conexiones" EntitySet="Catalogo_Conexiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuracion_Catalogo_Conexiones" Association="GenericsModel.FK_Configuracion_Catalogo_Conexiones">
+      <End Role="Catalogo_Conexiones" EntitySet="Catalogo_Conexiones" />
+      <End Role="Configuracion" EntitySet="Configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuracion_Catalogo_Procedimientos_Funciones" Association="GenericsModel.FK_Configuracion_Catalogo_Procedimientos_Funciones">
+      <End Role="Catalogo_Procedimientos_Funciones" EntitySet="Catalogo_Procedimientos_Funciones" />
+      <End Role="Configuracion" EntitySet="Configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuracion_Empresa_Pais" Association="GenericsModel.FK_Configuracion_Empresa_Pais">
+      <End Role="Empresa_Pais" EntitySet="Empresa_Pais" />
+      <End Role="Configuracion" EntitySet="Configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuracion_Estructuras_De_Base_Datos" Association="GenericsModel.FK_Configuracion_Estructuras_De_Base_Datos">
+      <End Role="Estructuras_De_Base_Datos" EntitySet="Estructuras_De_Base_Datos" />
+      <End Role="Configuracion" EntitySet="Configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empresa_Pais_Empresa" Association="GenericsModel.FK_Empresa_Pais_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Empresa_Pais" EntitySet="Empresa_Pais" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empresa_Pais_Pais" Association="GenericsModel.FK_Empresa_Pais_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Empresa_Pais" EntitySet="Empresa_Pais" />
+    </AssociationSet>
+    <AssociationSet Name="Procedimiento_Funcion_Parametro" Association="GenericsModel.Procedimiento_Funcion_Parametro">
+      <End Role="Catalogo_Procedimientos_Funciones" EntitySet="Catalogo_Procedimientos_Funciones" />
+      <End Role="Parametro" EntitySet="Parametro" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Catalogo_Conexiones">
+    <Key>
+      <PropertyRef Name="IdConexion" />
+    </Key>
+    <Property Name="IdConexion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ConnectionString" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdTipoBD" Type="Int32" />
+    <NavigationProperty Name="Tipos_Base_De_Datos" Relationship="GenericsModel.FK_Catalogo_Conexiones_Tipos_Base_De_Datos" FromRole="Catalogo_Conexiones" ToRole="Tipos_Base_De_Datos" />
+    <NavigationProperty Name="Configuracion" Relationship="GenericsModel.FK_Configuracion_Catalogo_Conexiones" FromRole="Catalogo_Conexiones" ToRole="Configuracion" />
+  </EntityType>
+  <EntityType Name="Catalogo_Procedimientos_Funciones">
+    <Key>
+      <PropertyRef Name="IdProcedimientoFuncion" />
+    </Key>
+    <Property Name="IdProcedimientoFuncion" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ValorMostar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Configuracion" Relationship="GenericsModel.FK_Configuracion_Catalogo_Procedimientos_Funciones" FromRole="Catalogo_Procedimientos_Funciones" ToRole="Configuracion" />
+    <NavigationProperty Name="Parametro" Relationship="GenericsModel.Procedimiento_Funcion_Parametro" FromRole="Catalogo_Procedimientos_Funciones" ToRole="Parametro" />
+  </EntityType>
+  <EntityType Name="Configuracion">
+    <Key>
+      <PropertyRef Name="IdConfiguracion" />
+      <PropertyRef Name="CodigoPais" />
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdConfiguracion" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProcedimientoFuncion" Type="Int64" />
+    <Property Name="IdConexion" Type="Int32" />
+    <Property Name="IdEstructura" Type="Int32" />
+    <Property Name="NombreSchema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodigoPais" Type="Int32" Nullable="false" />
+    <Property Name="IdEmpresa" Type="Int64" Nullable="false" />
+    <Property Name="Orden" Type="Int32" />
+    <NavigationProperty Name="Catalogo_Conexiones" Relationship="GenericsModel.FK_Configuracion_Catalogo_Conexiones" FromRole="Configuracion" ToRole="Catalogo_Conexiones" />
+    <NavigationProperty Name="Catalogo_Procedimientos_Funciones" Relationship="GenericsModel.FK_Configuracion_Catalogo_Procedimientos_Funciones" FromRole="Configuracion" ToRole="Catalogo_Procedimientos_Funciones" />
+    <NavigationProperty Name="Empresa_Pais" Relationship="GenericsModel.FK_Configuracion_Empresa_Pais" FromRole="Configuracion" ToRole="Empresa_Pais" />
+    <NavigationProperty Name="Estructuras_De_Base_Datos" Relationship="GenericsModel.FK_Configuracion_Estructuras_De_Base_Datos" FromRole="Configuracion" ToRole="Estructuras_De_Base_Datos" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdEmpresa" Type="Int64" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Empresa_Pais" Relationship="GenericsModel.FK_Empresa_Pais_Empresa" FromRole="Empresa" ToRole="Empresa_Pais" />
+  </EntityType>
+  <EntityType Name="Empresa_Pais">
+    <Key>
+      <PropertyRef Name="CodigoPais" />
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="CodigoPais" Type="Int32" Nullable="false" />
+    <Property Name="IdEmpresa" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Configuracion" Relationship="GenericsModel.FK_Configuracion_Empresa_Pais" FromRole="Empresa_Pais" ToRole="Configuracion" />
+    <NavigationProperty Name="Empresa" Relationship="GenericsModel.FK_Empresa_Pais_Empresa" FromRole="Empresa_Pais" ToRole="Empresa" />
+    <NavigationProperty Name="Pais" Relationship="GenericsModel.FK_Empresa_Pais_Pais" FromRole="Empresa_Pais" ToRole="Pais" />
+  </EntityType>
+  <EntityType Name="Estructuras_De_Base_Datos">
+    <Key>
+      <PropertyRef Name="IdEstructura" />
+    </Key>
+    <Property Name="IdEstructura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Configuracion" Relationship="GenericsModel.FK_Configuracion_Estructuras_De_Base_Datos" FromRole="Estructuras_De_Base_Datos" ToRole="Configuracion" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="CodigoPais" />
+    </Key>
+    <Property Name="CodigoPais" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Empresa_Pais" Relationship="GenericsModel.FK_Empresa_Pais_Pais" FromRole="Pais" ToRole="Empresa_Pais" />
+  </EntityType>
+  <EntityType Name="Parametro">
+    <Key>
+      <PropertyRef Name="IdParametro" />
+    </Key>
+    <Property Name="IdParametro" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="TipoDato" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Catalogo_Procedimientos_Funciones" Relationship="GenericsModel.Procedimiento_Funcion_Parametro" FromRole="Parametro" ToRole="Catalogo_Procedimientos_Funciones" />
+  </EntityType>
+  <EntityType Name="Tipos_Base_De_Datos">
+    <Key>
+      <PropertyRef Name="IdTipoBD" />
+    </Key>
+    <Property Name="IdTipoBD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Catalogo_Conexiones" Relationship="GenericsModel.FK_Catalogo_Conexiones_Tipos_Base_De_Datos" FromRole="Tipos_Base_De_Datos" ToRole="Catalogo_Conexiones" />
+  </EntityType>
+  <Association Name="FK_Catalogo_Conexiones_Tipos_Base_De_Datos">
+    <End Type="GenericsModel.Tipos_Base_De_Datos" Role="Tipos_Base_De_Datos" Multiplicity="0..1" />
+    <End Type="GenericsModel.Catalogo_Conexiones" Role="Catalogo_Conexiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipos_Base_De_Datos">
+        <PropertyRef Name="IdTipoBD" />
+      </Principal>
+      <Dependent Role="Catalogo_Conexiones">
+        <PropertyRef Name="IdTipoBD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuracion_Catalogo_Conexiones">
+    <End Type="GenericsModel.Catalogo_Conexiones" Role="Catalogo_Conexiones" Multiplicity="0..1" />
+    <End Type="GenericsModel.Configuracion" Role="Configuracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo_Conexiones">
+        <PropertyRef Name="IdConexion" />
+      </Principal>
+      <Dependent Role="Configuracion">
+        <PropertyRef Name="IdConexion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuracion_Catalogo_Procedimientos_Funciones">
+    <End Type="GenericsModel.Catalogo_Procedimientos_Funciones" Role="Catalogo_Procedimientos_Funciones" Multiplicity="0..1" />
+    <End Type="GenericsModel.Configuracion" Role="Configuracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo_Procedimientos_Funciones">
+        <PropertyRef Name="IdProcedimientoFuncion" />
+      </Principal>
+      <Dependent Role="Configuracion">
+        <PropertyRef Name="IdProcedimientoFuncion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuracion_Empresa_Pais">
+    <End Type="GenericsModel.Empresa_Pais" Role="Empresa_Pais" Multiplicity="1" />
+    <End Type="GenericsModel.Configuracion" Role="Configuracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa_Pais">
+        <PropertyRef Name="CodigoPais" />
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Configuracion">
+        <PropertyRef Name="CodigoPais" />
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuracion_Estructuras_De_Base_Datos">
+    <End Type="GenericsModel.Estructuras_De_Base_Datos" Role="Estructuras_De_Base_Datos" Multiplicity="0..1" />
+    <End Type="GenericsModel.Configuracion" Role="Configuracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estructuras_De_Base_Datos">
+        <PropertyRef Name="IdEstructura" />
+      </Principal>
+      <Dependent Role="Configuracion">
+        <PropertyRef Name="IdEstructura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empresa_Pais_Empresa">
+    <End Type="GenericsModel.Empresa" Role="Empresa" Multiplicity="1" />
+    <End Type="GenericsModel.Empresa_Pais" Role="Empresa_Pais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Empresa_Pais">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empresa_Pais_Pais">
+    <End Type="GenericsModel.Pais" Role="Pais" Multiplicity="1" />
+    <End Type="GenericsModel.Empresa_Pais" Role="Empresa_Pais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="CodigoPais" />
+      </Principal>
+      <Dependent Role="Empresa_Pais">
+        <PropertyRef Name="CodigoPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Procedimiento_Funcion_Parametro">
+    <End Type="GenericsModel.Catalogo_Procedimientos_Funciones" Role="Catalogo_Procedimientos_Funciones" Multiplicity="*" />
+    <End Type="GenericsModel.Parametro" Role="Parametro" Multiplicity="*" />
+  </Association>
+</Schema>

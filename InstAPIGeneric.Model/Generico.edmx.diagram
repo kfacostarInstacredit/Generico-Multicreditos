@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f378f2b0cf9417295ad6b0d1a2850bf" Name="Diagram1">
+        <EntityTypeShape EntityType="GenericsModel.Base_De_Datos" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="GenericsModel.Bitacora" Width="1.5" PointX="11.75" PointY="1.875" />
+        <EntityTypeShape EntityType="GenericsModel.Bitacora_Tablas" Width="1.5" PointX="7.75" PointY="1.875" />
+        <EntityTypeShape EntityType="GenericsModel.Catalogo_Conexiones" Width="1.5" PointX="7.5" PointY="6.25" />
+        <EntityTypeShape EntityType="GenericsModel.Catalogo_Procedimientos_Funciones" Width="1.5" PointX="7.5" PointY="12.375" />
+        <EntityTypeShape EntityType="GenericsModel.Configuracion" Width="1.5" PointX="9.75" PointY="6.375" />
+        <EntityTypeShape EntityType="GenericsModel.Empresa" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GenericsModel.Empresa_Pais" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="GenericsModel.Estructuras_De_Base_Datos" Width="1.5" PointX="5.25" PointY="12.875" />
+        <EntityTypeShape EntityType="GenericsModel.Pais" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="GenericsModel.Parametro" Width="1.5" PointX="7.5" PointY="16.875" />
+        <EntityTypeShape EntityType="GenericsModel.Procedimiento_Funcion_Parametro" Width="1.5" PointX="9.75" PointY="12.75" />
+        <EntityTypeShape EntityType="GenericsModel.Servidor" Width="1.5" PointX="3" PointY="8.75" />
+        <EntityTypeShape EntityType="GenericsModel.Tipos_Base_De_Datos" Width="1.5" PointX="5.25" PointY="8.75" />
+        <AssociationConnector Association="GenericsModel.FK_Base_De_Datos_Empresa_Pais" />
+        <AssociationConnector Association="GenericsModel.FK_Catalogo_Conexiones_Base_De_Datos" />
+        <AssociationConnector Association="GenericsModel.FK_Catalogo_Conexiones_Servidor" />
+        <AssociationConnector Association="GenericsModel.FK_Catalogo_Conexiones_Tipos_Base_De_Datos" />
+        <AssociationConnector Association="GenericsModel.FK_Configuracion_Catalogo_Conexiones" />
+        <AssociationConnector Association="GenericsModel.FK_Catalogo_Procedimientos_Funciones_Estructuras_De_Base_Datos" />
+        <AssociationConnector Association="GenericsModel.FK_Configuracion_Catalogo_Procedimientos_Funciones" />
+        <AssociationConnector Association="GenericsModel.FK_Procedimiento_Funcion_Parametro_Catalogo_Procedimientos_Funciones" />
+        <AssociationConnector Association="GenericsModel.FK_Empresa_Pais_Empresa" />
+        <AssociationConnector Association="GenericsModel.FK_Empresa_Pais_Pais" />
+        <AssociationConnector Association="GenericsModel.FK_Servidor_Pais" />
+        <AssociationConnector Association="GenericsModel.FK_Procedimiento_Funcion_Parametro_Parametro" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

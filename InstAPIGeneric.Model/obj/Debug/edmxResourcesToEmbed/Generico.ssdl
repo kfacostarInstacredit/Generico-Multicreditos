@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GenericsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Base_De_Datos">
+    <Key>
+      <PropertyRef Name="IdBaseDatos" />
+    </Key>
+    <Property Name="IdBaseDatos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="Usuario" Type="varchar" MaxLength="100" />
+    <Property Name="Clave" Type="varchar" MaxLength="200" />
+    <Property Name="IdEmpresa" Type="bigint" />
+    <Property Name="CodigoPais" Type="int" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Bitacora">
+    <Key>
+      <PropertyRef Name="IdBitacora" />
+      <PropertyRef Name="Paso" />
+    </Key>
+    <Property Name="IdBitacora" Type="int" Nullable="false" />
+    <Property Name="Paso" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mensaje" Type="text" />
+    <Property Name="Usuario" Type="int" />
+    <Property Name="FechaHora" Type="datetime" />
+    <Property Name="Parametros" Type="text" />
+    <Property Name="Resultado" Type="text" />
+    <Property Name="Exception" Type="text" />
+    <Property Name="Proceso" Type="text" />
+    <Property Name="Referencia" Type="int" />
+    <Property Name="Origen" Type="varchar" MaxLength="200" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Bitacora_Tablas">
+    <Key>
+      <PropertyRef Name="IdBitacoraTablas" />
+    </Key>
+    <Property Name="IdBitacoraTablas" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstadoActual" Type="text" />
+    <Property Name="EstadoNuevo" Type="text" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Catalogo_Conexiones">
+    <Key>
+      <PropertyRef Name="IdConexion" />
+    </Key>
+    <Property Name="IdConexion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="IdTipoBD" Type="int" />
+    <Property Name="IdServidor" Type="int" />
+    <Property Name="IdBaseDatos" Type="int" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Catalogo_Procedimientos_Funciones">
+    <Key>
+      <PropertyRef Name="IdProcedimientoFuncion" />
+    </Key>
+    <Property Name="IdProcedimientoFuncion" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="200" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="ValorMostar" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstructura" Type="int" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Configuracion">
+    <Key>
+      <PropertyRef Name="IdConfiguracionProceso" />
+      <PropertyRef Name="IdConfiguracion" />
+    </Key>
+    <Property Name="IdConfiguracionProceso" Type="int" Nullable="false" />
+    <Property Name="IdConfiguracion" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdProcedimientoFuncion" Type="bigint" />
+    <Property Name="IdConexion" Type="int" />
+    <Property Name="Orden" Type="int" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="IdEmpresa" Type="bigint" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Descripcion" Type="text" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Empresa_Pais">
+    <Key>
+      <PropertyRef Name="CodigoPais" />
+      <PropertyRef Name="IdEmpresa" />
+    </Key>
+    <Property Name="CodigoPais" Type="int" Nullable="false" />
+    <Property Name="IdEmpresa" Type="bigint" Nullable="false" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Estructuras_De_Base_Datos">
+    <Key>
+      <PropertyRef Name="IdEstructura" />
+    </Key>
+    <Property Name="IdEstructura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="CodigoPais" />
+    </Key>
+    <Property Name="CodigoPais" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Parametro">
+    <Key>
+      <PropertyRef Name="IdParametro" />
+    </Key>
+    <Property Name="IdParametro" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="30" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Procedimiento_Funcion_Parametro">
+    <Key>
+      <PropertyRef Name="IdParametro" />
+      <PropertyRef Name="IdProcedimientoFuncion" />
+    </Key>
+    <Property Name="IdParametro" Type="bigint" Nullable="false" />
+    <Property Name="IdProcedimientoFuncion" Type="bigint" Nullable="false" />
+    <Property Name="TipoDato" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Servidor">
+    <Key>
+      <PropertyRef Name="IdServidor" />
+    </Key>
+    <Property Name="IdServidor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="200" />
+    <Property Name="IP" Type="varchar" MaxLength="200" />
+    <Property Name="Puerto" Type="varchar" MaxLength="20" />
+    <Property Name="CodigoPais" Type="int" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Tipos_Base_De_Datos">
+    <Key>
+      <PropertyRef Name="IdTipoBD" />
+    </Key>
+    <Property Name="IdTipoBD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EstructuraConexion" Type="varchar" MaxLength="200" />
+    <Property Name="UsuarioModificacion" Type="bigint" />
+    <Property Name="FechaModificacion" Type="datetime" />
+    <Property Name="UsuarioCreador" Type="bigint" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Base_De_Datos_Empresa_Pais">
+    <End Role="Empresa_Pais" Type="Self.Empresa_Pais" Multiplicity="0..1" />
+    <End Role="Base_De_Datos" Type="Self.Base_De_Datos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa_Pais">
+        <PropertyRef Name="CodigoPais" />
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Base_De_Datos">
+        <PropertyRef Name="CodigoPais" />
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Catalogo_Conexiones_Base_De_Datos">
+    <End Role="Base_De_Datos" Type="Self.Base_De_Datos" Multiplicity="0..1" />
+    <End Role="Catalogo_Conexiones" Type="Self.Catalogo_Conexiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Base_De_Datos">
+        <PropertyRef Name="IdBaseDatos" />
+      </Principal>
+      <Dependent Role="Catalogo_Conexiones">
+        <PropertyRef Name="IdBaseDatos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Catalogo_Conexiones_Servidor">
+    <End Role="Servidor" Type="Self.Servidor" Multiplicity="0..1" />
+    <End Role="Catalogo_Conexiones" Type="Self.Catalogo_Conexiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servidor">
+        <PropertyRef Name="IdServidor" />
+      </Principal>
+      <Dependent Role="Catalogo_Conexiones">
+        <PropertyRef Name="IdServidor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Catalogo_Conexiones_Tipos_Base_De_Datos">
+    <End Role="Tipos_Base_De_Datos" Type="Self.Tipos_Base_De_Datos" Multiplicity="0..1" />
+    <End Role="Catalogo_Conexiones" Type="Self.Catalogo_Conexiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipos_Base_De_Datos">
+        <PropertyRef Name="IdTipoBD" />
+      </Principal>
+      <Dependent Role="Catalogo_Conexiones">
+        <PropertyRef Name="IdTipoBD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Catalogo_Procedimientos_Funciones_Estructuras_De_Base_Datos">
+    <End Role="Estructuras_De_Base_Datos" Type="Self.Estructuras_De_Base_Datos" Multiplicity="0..1" />
+    <End Role="Catalogo_Procedimientos_Funciones" Type="Self.Catalogo_Procedimientos_Funciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estructuras_De_Base_Datos">
+        <PropertyRef Name="IdEstructura" />
+      </Principal>
+      <Dependent Role="Catalogo_Procedimientos_Funciones">
+        <PropertyRef Name="IdEstructura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuracion_Catalogo_Conexiones">
+    <End Role="Catalogo_Conexiones" Type="Self.Catalogo_Conexiones" Multiplicity="0..1" />
+    <End Role="Configuracion" Type="Self.Configuracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo_Conexiones">
+        <PropertyRef Name="IdConexion" />
+      </Principal>
+      <Dependent Role="Configuracion">
+        <PropertyRef Name="IdConexion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Configuracion_Catalogo_Procedimientos_Funciones">
+    <End Role="Catalogo_Procedimientos_Funciones" Type="Self.Catalogo_Procedimientos_Funciones" Multiplicity="0..1" />
+    <End Role="Configuracion" Type="Self.Configuracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo_Procedimientos_Funciones">
+        <PropertyRef Name="IdProcedimientoFuncion" />
+      </Principal>
+      <Dependent Role="Configuracion">
+        <PropertyRef Name="IdProcedimientoFuncion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empresa_Pais_Empresa">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+    <End Role="Empresa_Pais" Type="Self.Empresa_Pais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="IdEmpresa" />
+      </Principal>
+      <Dependent Role="Empresa_Pais">
+        <PropertyRef Name="IdEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empresa_Pais_Pais">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+    <End Role="Empresa_Pais" Type="Self.Empresa_Pais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="CodigoPais" />
+      </Principal>
+      <Dependent Role="Empresa_Pais">
+        <PropertyRef Name="CodigoPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Procedimiento_Funcion_Parametro_Catalogo_Procedimientos_Funciones">
+    <End Role="Catalogo_Procedimientos_Funciones" Type="Self.Catalogo_Procedimientos_Funciones" Multiplicity="1" />
+    <End Role="Procedimiento_Funcion_Parametro" Type="Self.Procedimiento_Funcion_Parametro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Catalogo_Procedimientos_Funciones">
+        <PropertyRef Name="IdProcedimientoFuncion" />
+      </Principal>
+      <Dependent Role="Procedimiento_Funcion_Parametro">
+        <PropertyRef Name="IdProcedimientoFuncion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Procedimiento_Funcion_Parametro_Parametro">
+    <End Role="Parametro" Type="Self.Parametro" Multiplicity="1" />
+    <End Role="Procedimiento_Funcion_Parametro" Type="Self.Procedimiento_Funcion_Parametro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametro">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="Procedimiento_Funcion_Parametro">
+        <PropertyRef Name="IdParametro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Servidor_Pais">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="0..1" />
+    <End Role="Servidor" Type="Self.Servidor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="CodigoPais" />
+      </Principal>
+      <Dependent Role="Servidor">
+        <PropertyRef Name="CodigoPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GenericsModelStoreContainer">
+    <EntitySet Name="Base_De_Datos" EntityType="Self.Base_De_Datos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bitacora" EntityType="Self.Bitacora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bitacora_Tablas" EntityType="Self.Bitacora_Tablas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Catalogo_Conexiones" EntityType="Self.Catalogo_Conexiones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Catalogo_Procedimientos_Funciones" EntityType="Self.Catalogo_Procedimientos_Funciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Configuracion" EntityType="Self.Configuracion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empresa_Pais" EntityType="Self.Empresa_Pais" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estructuras_De_Base_Datos" EntityType="Self.Estructuras_De_Base_Datos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parametro" EntityType="Self.Parametro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Procedimiento_Funcion_Parametro" EntityType="Self.Procedimiento_Funcion_Parametro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servidor" EntityType="Self.Servidor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipos_Base_De_Datos" EntityType="Self.Tipos_Base_De_Datos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Base_De_Datos_Empresa_Pais" Association="Self.FK_Base_De_Datos_Empresa_Pais">
+      <End Role="Empresa_Pais" EntitySet="Empresa_Pais" />
+      <End Role="Base_De_Datos" EntitySet="Base_De_Datos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Catalogo_Conexiones_Base_De_Datos" Association="Self.FK_Catalogo_Conexiones_Base_De_Datos">
+      <End Role="Base_De_Datos" EntitySet="Base_De_Datos" />
+      <End Role="Catalogo_Conexiones" EntitySet="Catalogo_Conexiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Catalogo_Conexiones_Servidor" Association="Self.FK_Catalogo_Conexiones_Servidor">
+      <End Role="Servidor" EntitySet="Servidor" />
+      <End Role="Catalogo_Conexiones" EntitySet="Catalogo_Conexiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Catalogo_Conexiones_Tipos_Base_De_Datos" Association="Self.FK_Catalogo_Conexiones_Tipos_Base_De_Datos">
+      <End Role="Tipos_Base_De_Datos" EntitySet="Tipos_Base_De_Datos" />
+      <End Role="Catalogo_Conexiones" EntitySet="Catalogo_Conexiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Catalogo_Procedimientos_Funciones_Estructuras_De_Base_Datos" Association="Self.FK_Catalogo_Procedimientos_Funciones_Estructuras_De_Base_Datos">
+      <End Role="Estructuras_De_Base_Datos" EntitySet="Estructuras_De_Base_Datos" />
+      <End Role="Catalogo_Procedimientos_Funciones" EntitySet="Catalogo_Procedimientos_Funciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuracion_Catalogo_Conexiones" Association="Self.FK_Configuracion_Catalogo_Conexiones">
+      <End Role="Catalogo_Conexiones" EntitySet="Catalogo_Conexiones" />
+      <End Role="Configuracion" EntitySet="Configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Configuracion_Catalogo_Procedimientos_Funciones" Association="Self.FK_Configuracion_Catalogo_Procedimientos_Funciones">
+      <End Role="Catalogo_Procedimientos_Funciones" EntitySet="Catalogo_Procedimientos_Funciones" />
+      <End Role="Configuracion" EntitySet="Configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empresa_Pais_Empresa" Association="Self.FK_Empresa_Pais_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Empresa_Pais" EntitySet="Empresa_Pais" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empresa_Pais_Pais" Association="Self.FK_Empresa_Pais_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Empresa_Pais" EntitySet="Empresa_Pais" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Procedimiento_Funcion_Parametro_Catalogo_Procedimientos_Funciones" Association="Self.FK_Procedimiento_Funcion_Parametro_Catalogo_Procedimientos_Funciones">
+      <End Role="Catalogo_Procedimientos_Funciones" EntitySet="Catalogo_Procedimientos_Funciones" />
+      <End Role="Procedimiento_Funcion_Parametro" EntitySet="Procedimiento_Funcion_Parametro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Procedimiento_Funcion_Parametro_Parametro" Association="Self.FK_Procedimiento_Funcion_Parametro_Parametro">
+      <End Role="Parametro" EntitySet="Parametro" />
+      <End Role="Procedimiento_Funcion_Parametro" EntitySet="Procedimiento_Funcion_Parametro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Servidor_Pais" Association="Self.FK_Servidor_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Servidor" EntitySet="Servidor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
